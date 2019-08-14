@@ -28,19 +28,57 @@
         <br>
         <p>Each time when the game starts, the game will change the values of each crystal.</p>
         
-    </div>  
+    </div> 
 
-    <div>
-        <p id="wins-text"></p>
+    <div class = "container">
+       
+        <div class = "row">
+            <div class="col-md-8">
+                <h2 id="randomNumber"></h2>
+            </div>
 
-        <p id="losses-text"></p>
+            <div class="col-md-4">
+                <div>
+                    <p id="wins-text"></p>
 
+                    <p id="losses-text"></p>
+                </div>
+            </div>  
+        </div>
+
+        <div class = "row">   
+            <div class="col-md-3 crystals">
+                
+                <input type="image" name="imgbtn1" src="assets/images/redCrystal.jpeg" alt="redCrystal" height="100" width="100">
+        
+            </div>
+
+            <div class="col-md-3 crystals">
+                    
+                <input type="image" name="imgbtn2" src="assets/images/blueCrystal.jpg" alt="blueCrystal" height="100" width="100">
+            
+            </div>
+
+            <div class="col-md-3 crystals">
+                
+                <input type="image" name="imgbtn3" src="assets/images/yellowCrystal.jpg" alt="yellowCrystal" height="100" width="100">
+                
+            </div>
+
+            <div class="col-md-3 crystals">
+                
+                <input type="image" name="imgbtn4" src="assets/images/purpleCrystal.jpg" alt="purpleCrystal" height="100" width="100">
+                    
+            </div>
+        </div> 
+
+            <div>
+
+                <p id="counter-text"></p>
+
+            </div>
+        </section>  
     </div>
-
-    <div id="crystals">
-   
-    </div>
-
 
 
 
@@ -54,65 +92,43 @@
     
         $(document).ready(function() { 
 
-            var targetNumber = 30;
-
             // Variables for the number of wins and losses in the game
             var wins = 0;
             var losses = 0;
 
-            //Variables for where in HTML things need to go
-            var winsText = document.getElementById("wins-text");
-            var lossesText = document.getElementById("losses-text");
-
-            //"Number-to-guess" matches the "targetNumber" now
-            $("#number-to-guess").text(targetNumber);
-            
+            // Variable that reflects the users progress 
             var counter = 0;
 
-            // Right now number is chosen by array, but I will change it to random 19-120 later
-            var numberChoices = [10, 50, 100, 120];
+            // Variables for where in HTML things need to go
+            var winsText = document.getElementById("wins-text");
+            var lossesText = document.getElementById("losses-text");
+            var counterText = document.getElementById("counter-text");
 
-            for (var i = 0; i < numberChoices.length; i++) {
-
-                // An imageButton for every iteration
-                var imageButton = $("<img>");
-
-                // The will apply the CSS
-                imageButton.addClass("crystalImage");
-
-                // Every imageButton will have a src link to the image 
-                imageButton.attr("src", "http://www.pngall.com/wp-content/uploads/2017/01/Ruby-Stone-Free-PNG-Image.png");
-            
-                // Every image has a data value and this attribute is equal to the array value
-                imageButton.attr("data-crystalvalue", numberChoices[i]);
-
-                $("#crystals").append(imageButton);
-            }
-
-            // This click event applies to every single crystal 
-            $(".crystalImage").on("click", function() {
-
-                var crystalValue = ($(this).attr("data-crystalvalue"));
-                crystalValue = parseInt(crystalValue);
-
-                counter += crystalValue;
+            // A number is chosen between 19 - 120 for the user to match
+            var numberChoices = Math.floor(Math.random() * 120) + 20;
+            console.log(numberChoices);
+            numberChoicesText = document.getElementById("randomNumber");
             
 
-                alert("Your new score is: " + counter);
-                // If the user wins
-                if(counter === targetNumber) {
-                    wins++;
-                // If the user looses
-                } else if (counter > targetNumber) {
-                    losses++;
 
-                }
+
+            
+                // // If the user wins
+                // if(counter === numberChoices) {
+                //     wins++;
+                // // If the user looses
+                // } else if (counter > numberChoices) {
+                //     losses++;
+
+                // }
                 
+                numberChoicesText.textContent = numberChoices;
                 winsText.textContent = "Wins: " + wins;
                 lossesText.textContent = "Losses: " + losses;
+                counterText.textContent = "Your total score is: " + counter;
             
-            });
-        });   
+        });
+          
     </script>
 
 
