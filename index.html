@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+   
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   
+    <link rel="stylesheet" href="assets/css/style.css">
+   
     <title>Crystal Game</title>
 </head>
 
@@ -33,11 +36,11 @@
     <div class = "container">
        
         <div class = "row">
-            <div class="col-md-8">
+            <div class="col-md-8" id="left">
                 <h2 id="randomNumber"></h2>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-4" id="right">
                 <div>
                     <p id="wins-text"></p>
 
@@ -49,30 +52,30 @@
         <div class = "row">   
             <div class="col-md-3 crystals">
                 
-                <input type="image" name="imgbtn1" src="assets/images/redCrystal.jpeg" alt="redCrystal" height="100" width="100">
+                <input type="image" name="imgbtn1" class="crystal" id="red" src="assets/images/redCrystal.jpeg" alt="redCrystal" height="100" width="100">
         
             </div>
 
             <div class="col-md-3 crystals">
                     
-                <input type="image" name="imgbtn2" src="assets/images/blueCrystal.jpg" alt="blueCrystal" height="100" width="100">
+                <input type="image" name="imgbtn2" class="crystal" id="blue" src="assets/images/blueCrystal.jpg" alt="blueCrystal" height="100" width="100">
             
             </div>
 
             <div class="col-md-3 crystals">
                 
-                <input type="image" name="imgbtn3" src="assets/images/yellowCrystal.jpg" alt="yellowCrystal" height="100" width="100">
+                <input type="image" name="imgbtn3" class="crystal" id="yellow" src="assets/images/yellowCrystal.jpg" alt="yellowCrystal" height="100" width="100">
                 
             </div>
 
             <div class="col-md-3 crystals">
                 
-                <input type="image" name="imgbtn4" src="assets/images/purpleCrystal.jpg" alt="purpleCrystal" height="100" width="100">
+                <input type="image" name="imgbtn4" class="crystal" id="purple" src="assets/images/purpleCrystal.jpg" alt="purpleCrystal" height="100" width="100">
                     
             </div>
         </div> 
 
-            <div>
+            <div id="result">
 
                 <p id="counter-text"></p>
 
@@ -110,7 +113,12 @@
             numberChoicesText = document.getElementById("randomNumber");
             
 
-
+            // Each crystal is given a value betwen 1 - 12 that changes after each game 
+            var crystalNumber = Math.floor(Math.random() * 12) + 1; 
+                $(".crystal").click(function() {
+                    $("counter-text").html(crystalNumber);
+                    console.log(crystalNumber);
+                })
 
             
                 // // If the user wins
