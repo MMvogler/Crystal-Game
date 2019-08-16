@@ -24,6 +24,10 @@ $(document).ready(function() {
 
         $("#counter-text").text("0");
 
+        // numberChoices=" ";
+
+
+
 
     }
     
