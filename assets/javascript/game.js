@@ -16,10 +16,20 @@ $(document).ready(function() {
     var numberChoices = Math.floor(Math.random() * 120) + 20;
     console.log(numberChoices);
     numberChoicesText = document.getElementById("randomNumber");
+
+    // Fuction that resets the counter to zero
+    function reset() {
+
+        counter = 0;
+
+        $("#counter-text").text("0");
+
+
+    }
     
 
     // Each crystal is given a value betwen 1 - 12 that changes after each game 
-    var crystalNumber = Math.floor(Math.random() * 12) + 1; 
+     
         $(".crystal").click(function() {
             if(parseInt(this.value) === -1) {
                 this.value = Math.floor(Math.random() * 12) +1;
@@ -30,11 +40,15 @@ $(document).ready(function() {
             // If the user wins
         if(counter === numberChoices) {
             wins++;
+            // document.getElementById("numberChoicesText").innerHTML=wins++;
+            reset();
 
         
         // If the user looses
         } else if (counter > numberChoices) {
             losses++;
+            // document.getElementById("numberChoicesText").innerHTML=losses++;
+            reset();
 
         }
 
